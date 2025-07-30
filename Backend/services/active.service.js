@@ -5,14 +5,16 @@ const interval = process.env.RELOAD_INTERVAL || 5; // Default to 5 minutes if no
 
 function reloadWebsite() {
   axios
-    .get(SERVER_URL + "/reload")
-    .then((response) => { })
+    // .get(SERVER_URL + "/reload")
+    .get(`${SERVER_URL}/reload`)
+    .then((response) => {console.log("Reloaded server"); })
     .catch((error) => {
-      console.log("Error reloading server");
+      console.log("Error reloading server", error.message);
     });
 }
 
 function keepServerRunning() {
+  console.log(`Keep-alive interval set to every ${interval} minute(s)`);
   setInterval(reloadWebsite, 60000 * interval);
 }
 
