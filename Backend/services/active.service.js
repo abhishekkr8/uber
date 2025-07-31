@@ -7,7 +7,7 @@ function reloadWebsite() {
   axios
     // .get(SERVER_URL + "/reload")
     .get(`${SERVER_URL}/reload`)
-    .then((response) => {console.log("Reloaded server"); })
+    .then((response) => { console.log("Reloaded server"); })
     .catch((error) => {
       console.log("Error reloading server", error.message);
     });
